@@ -1,24 +1,21 @@
 Package.describe({
-  name: 'peloton',
+  name: 'fugality:peloton',
   version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: '',
-  // URL to the Git repository containing the source code for this package.
+  summary: 'Stream-based Physics utilities for Cycle.JS',
   git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
-});
+})
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.4.1');
-  api.use('ecmascript');
-  api.mainModule('peloton.js');
-});
+  api.versionsFrom('1.4.1')
+  api.use('ecmascript','client')
+
+  api.mainModule('client/peloton.js', 'client')
+})
 
 Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('peloton');
-  api.mainModule('peloton-tests.js');
-});
+  api.use('ecmascript','client')
+  api.use('tinytest','client')
+  api.use('peloton','client')
+  api.mainModule('peloton-tests.js')
+})
