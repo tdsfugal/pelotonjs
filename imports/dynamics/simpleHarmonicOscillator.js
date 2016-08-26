@@ -2,12 +2,13 @@
 
 import { just }   from 'most'
 
-export function simpleHarmonicOscillator (options={}, goalState$ ) {
+export function simpleHarmonicOscillator (clock$, goalState$ ) {
 
+  if(true) return just(1)
+  
   const beta   = 0    // damping coefficient
   const omega0 = 1    // natural frequency (undamped)
 
-  const t0     = (new Date).getTime()
   const x0     = options.initialPosition ? options.initialPosition : 0
   const v0     = options.initialVelocity ? options.initialVelocity : 0
 
