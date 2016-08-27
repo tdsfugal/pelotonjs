@@ -1,14 +1,14 @@
 
 
-import { periodic, from, observe, just }                 from 'most'
+import { observe, just }                       from 'most'
 import { createAnimationTrigger }              from '../drivers/createAnimationTrigger.js'
 import { harmonicOscillator }                  from './harmonicOscillator.js'
 
 const trigger$ = createAnimationTrigger()()
 
-const control$ = just("End").delay(2000).startWith("Start").delay(1000)
+const control$ = just("End").delay(2000).startWith("Start").delay(5000)
 
-const restPos$ = just(0)
+const restPos$ = just(0).multicast()
 
 
 //trigger$.observe( x => console.log("Trigger = " + x))
@@ -24,3 +24,6 @@ const states$ = harmonicOscillator(trigger$, control$, {
 })
 
 states$.observe( x => console.log(x))
+
+
+console.log("loaded")
