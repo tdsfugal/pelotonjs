@@ -19,7 +19,7 @@ const states$ = harmonicOscillator(trigger$, control$, {
   restPos$    : restPos$,
   initPos     : 1,
   initVel     : 0,
-  damping     : 1,       // 1 is critically damped, 0 is not damped
+  damping     : 0,       // 1 is critically damped, 0 is not damped
   frequency   : 2        // Hz
 })
 

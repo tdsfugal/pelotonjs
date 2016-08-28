@@ -1,7 +1,7 @@
 Package.describe({
   name: 'fugality:peloton',
-  version: '0.0.1',
-  summary: 'Stream-based Physics utilities for Cycle.JS',
+  version: '0.1.0',
+  summary: 'Stream-based Physics library for animating Cycle.JS apps. Uses Most.js',
   git: '',
   documentation: 'README.md'
 })
@@ -11,11 +11,4 @@ Package.onUse(function(api) {
   api.use('ecmascript','client')
 
   api.mainModule('client/peloton.js', 'client')
-})
-
-Package.onTest(function(api) {
-  api.use('ecmascript','client')
-  api.use('tinytest','client')
-  api.use('peloton','client')
-  api.mainModule('peloton-tests.js')
 })

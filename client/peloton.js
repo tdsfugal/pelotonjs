@@ -10,6 +10,7 @@ export * from '../imports/dynamics/harmonicOscillator.js'
  */
 
 //import '../imports/drivers/createAnimationClockDriver-Test.js'
+
 //import '../imports/clocks/simple/simpleClock-test.js'
 
-import '../imports/dynamics/harmonicOscillator-test.js'
+//import '../imports/dynamics/harmonicOscillator-test.js'

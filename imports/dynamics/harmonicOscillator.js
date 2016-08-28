@@ -1,15 +1,16 @@
 
 import { combine, just, zip }   from 'most'
+import hold                     from '@most/hold'
 
 import { simpleClock }          from '../clocks/simple/simpleClock.js'
-import { rungeKutta4 }          from '../solvers/rungeKutta4.js'
+import rungeKutta               from '../solvers/rungeKuttaMidpoint.js'
 
 export function harmonicOscillator (trigger$, control$, options = {} ) {
 
   console.log(options)
 
   // Parameter sources; implies piecewise continuous ODE
-  const restPos$ = options.restPos$ ? options.restPos$  : just(0)
+  const restPos$ = hold(options.restPos$ ? options.restPos$  : just(0))
 
   // Parameter constants (this would be so much easier in CoffeeScript)
   let initPos = 0         // pixels... Could be a problem
@@ -41,26 +42,33 @@ export function harmonicOscillator (trigger$, control$, options = {} ) {
   const delT$ = simpleClock(trigger$, control$)
     .map( t => t[0]/1000)  // delta time, seconds.  Absolute time is implicit.
 
-  // Every clock tick pulse emits an array of computation inputs
-  const pulse$  = zip(
-    ( h, f) => [ h, f ],  // zip time interval and integration function together
-    delT$,
-    delT$.sample(         // Sample the dynamic parameters every clock tick
-      ( y_star ) => {     // to create a custom integration function for this instant.
+  // The function stream computes the integration function.  This only needs to change when
+  // the parameters for the function change, so it is cached in its own stream.
+  const func$ = hold(
+    restPos$.map(
+      ( y_star ) => {
         return function f(y, yd) {
           return [
             yd,                                     // Integrate velocity to get position
             - beta * yd - omega0_2 * (y - y_star)   // integrate acceleration to get velocity
           ]                                         //   where Accel = F/M = (-beta*rd ...)
         }
-      },
-      restPos$
+      }
     )
+  )
+
+  // Every pulse emits a [ delta time, integration function ] pair for the ODE solver to evaluate
+  const pulse$  = zip(
+    ( h, f) => {
+      return [ h, f ]  // zip time interval and integration function together
+    },
+    delT$,
+    delT$.sample( ( f ) => f, func$ )
   ).until(control$.filter( x => x == "End"))      // until done
 
   // State is the physics event loop.  Every time PulseS pulses State$ executes one loop.
   // Each loop is a time step computation of the ordinary differential equation F=MA.
-  const state$ = rungeKutta4( pulse$, [ initPos, initVel ] )
+  const state$ = rungeKutta( pulse$, [ initPos, initVel ] )
 
   return state$
 }
