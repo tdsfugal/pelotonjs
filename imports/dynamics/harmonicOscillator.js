@@ -6,9 +6,7 @@ import { simpleClock }          from '../clocks/simple/simpleClock.js'
 import rungeKutta               from '../solvers/rungeKuttaMidpoint.js'
 
 export function harmonicOscillator (trigger$, control$, options = {} ) {
-
-  console.log(options)
-
+  
   // Parameter sources; implies piecewise continuous ODE
   const restPos$ = hold(options.restPos$ ? options.restPos$  : just(0))
 
