@@ -11,11 +11,9 @@ Since virtually everything in Peloton exists in time and space these two drivers
 The viewportSizeDriver reponds to resize events in the browser window. 
 
 ####AnimationTrigger
-
 Animation trigger produces a [ deltaTime, absoluteTime ] pair every time getAnimationFrame fires, or roughly every 16 milliseconds for a 60 hz display. 
 
 ###Clocks
- 
 There are several clock types in Peloton.  They are all pure functions that accept a trigger stream and a control stream as input and produce a clock stream that emits *tick*s synchronized with the animation trigger. The simplest clock, *simpleClock*,  responds to a control stream by emitting ticks synchronized with the browser's AnimationFrame after receiving a "Start" message, and pausing after receiving a "Stop" message. All clocks terminate with an "End" message. 
 
 ```javascript
@@ -47,6 +45,10 @@ bigBen$.observe( tick => console.log("DeltaTime = " + tick[0]/1000 + "   Absolut
 // Control$ emits a "Start"
 // ... nothing
 ```
+Clocks are the primary control structure in Peloton.  They are embedded in every dynamic function so they rarely have to be explicitly created, but it is important to understand how they are controlled because the control streams are often available outside of the dynamic functions. 
+
+###Dynamics
+
 
 
 ##Use
