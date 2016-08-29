@@ -7,7 +7,7 @@ Peloton is an experiment in stream-based, FRP physics engines for Cycle.JS appli
 
 Virtually everything in Peloton is a stream.  Most.js was selected as the stream package to power Peloton because of its run-time speed. xStream was considered because of its affinity with Cycle.js, however the advantages of its slightly smaller footprint and simpler API were not compelling given the in-lining and other performance tuning that most.js offers.  
 
-###Use
+###Status
 
 A few of the functions in Peloton have been coded. They are undergoing unit testing and will be uploaded later. 
 
