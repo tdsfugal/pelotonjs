@@ -24,7 +24,8 @@ First, install the two drivers in the main Cycle.js application:
 
 import { 
   createViewportSizeDriver,
-  createAnimationTrigger }   from 'peloton'
+  createAnimationTrigger 
+}                            from 'peloton'
   
 import { makeDOMDriver }     from '@cycle/dom'
 
