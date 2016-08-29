@@ -1,6 +1,6 @@
 Package.describe({
   name: 'fugality:peloton',
-  version: '0.1.0',
+  version: '0.2.0',
   summary: 'Stream-based Physics library for animating Cycle.JS apps. Uses Most.js',
   git: '',
   documentation: 'README.md'

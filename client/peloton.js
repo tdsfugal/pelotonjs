@@ -13,7 +13,6 @@ export * from '../imports/dynamics/harmonicOscillator.js'
 
 //import '../imports/clocks/simple/simpleClock-test.js'
 
-//import '../imports/dynamics/harmonicOscillator-test.js'
-import '../imports/dynamics/harmonicOscillator2-test.js'
+//import '../imports/dynamics/harmonicOscillator-test.js' 
 
 //import '../imports/testProxy/foo.js'
