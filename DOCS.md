@@ -36,7 +36,7 @@ function main(sources) {
   const trigger$    = sources.trigger    // with either vpSize or trigger
   const ...          // other sources
 
-  ... do amazing stuff ...
+  ... // do amazing stuff 
 
   return {
     DOM : vDom$,
