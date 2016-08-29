@@ -14,6 +14,40 @@ The viewportSizeDriver reponds to resize events in the browser window.
 
 Animation trigger produces a [ deltaTime, absoluteTime ] pair every time getAnimationFrame fires, or roughly every 16 milliseconds for a 60 hz display. 
 
+###Clocks
+ 
+There are several clock types in Peloton.  They are all pure functions that accept a trigger stream and a control stream as input and produce clock *tick*s synchronized with the animation frame. The simplest clock, *simpleClock*,  responds to a control stream by emitting ticks synchronized with the browser's AnimationFrame after receiving a "Start" message, and pausing after receiving a "Stop" message. The clock terminates with an "End" message. 
+
+```javascript
+
+const control$ = // some stream related to the operational context for the clock
+
+const bigBen$ = SimpleClock(trigger$, control$)   // trigger$ comes from the animationTrigger driver
+
+bigBen$.observe( tick => console.log("DeltaTime = " + tick[0]/1000 + "   AbsoluteTime = " + tick[1]/1000)  // convert millis to seconds
+
+// Control$ emits a "Start", starting the clock stream bigBen$
+// > DeltaTime = 0   AbsoluteTime = 2345.xxx                     // On the first tick deltaTime is undefined so a zero is returned
+// > DeltaTime = 0.01672...   AbsoluteTime = ...whatever
+// > DeltaTime = 0.01681...   AbsoluteTime = ...whatever
+// > DeltaTime = 0.01678...   AbsoluteTime = ...whatever
+// > DeltaTime = 0.01675...   AbsoluteTime = ...whatever
+// Control$ emits a "Stop", pausing the clock stream bigBen$
+// 
+//  ... time passes
+// 
+// Control$ emits a "Start"
+// > DeltaTime = 0   AbsoluteTime = 9745.xxx                    // DeltaTime is still undefined on the first tick so a zero is returned
+// > DeltaTime = 0.01672...   AbsoluteTime = ...whatever
+// > DeltaTime = 0.01681...   AbsoluteTime = ...whatever
+// > DeltaTime = 0.01678...   AbsoluteTime = ...whatever
+// > DeltaTime = 0.01675...   AbsoluteTime = ...whatever
+
+// Control$ emits an "End", terminating bigBen$
+// Control$ emits a "Start"
+// ... nothing
+```
+
 
 ##Use
 
