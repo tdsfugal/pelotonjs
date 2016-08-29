@@ -16,7 +16,7 @@ Animation trigger produces a [ deltaTime, absoluteTime ] pair every time getAnim
 
 ###Clocks
  
-There are several clock types in Peloton.  They are all pure functions that accept a trigger stream and a control stream as input and produce clock *tick*s synchronized with the animation frame. The simplest clock, *simpleClock*,  responds to a control stream by emitting ticks synchronized with the browser's AnimationFrame after receiving a "Start" message, and pausing after receiving a "Stop" message. The clock terminates with an "End" message. 
+There are several clock types in Peloton.  They are all pure functions that accept a trigger stream and a control stream as input and produce a clock stream that emits *tick*s synchronized with the animation trigger. The simplest clock, *simpleClock*,  responds to a control stream by emitting ticks synchronized with the browser's AnimationFrame after receiving a "Start" message, and pausing after receiving a "Stop" message. All clocks terminate with an "End" message. 
 
 ```javascript
 
