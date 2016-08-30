@@ -12,7 +12,7 @@ Likewise, there are solid data visualization packages out there too. D3, for exa
 
 There are many CSS tweening packages designed to make the DOM sing, but these packages do a poor job of covering information through motion.  If all you need are a smooth, fast twiddles, bounces, and twirls to wake up the user for web commerce then check out Angular, GreenSock, or any of the other solid, hardware accelerated solutions.  
 
-Finally, there are a few frameworks that aspire to do to all - smooth, physics-based motions; real time data visualization; DOM-compatible interactivity, and so on.  The most famous of these, **famous**, folded up its flagship application framework Famo.us to pursue a quick-app framework for mobile applications. It's legacy, Samsara, is impressive but its author Dave Valdman is deliberately avoiding the massive crush of requirements that ended Famous. 
+Finally, there are a few frameworks that aspire to do to all - smooth, physics-based motions; real time data visualization; DOM-compatible interactivity, and so on.  The most famous of these, **famous**, folded up its flagship framework to pursue a quick-app development solution for non-coders. It's legacy, Samsara, is impressive but its author Dave Valdman is deliberately avoiding the massive crush of requirements that ended Famous. 
 
 Like Samsara, virtually everything in Peloton is a stream.  The decision to use streams is slightly different, though.  Streams help untangle timing issues, however conventional scheduled physics engines manage to do this well without the additional overhead of stream processing.  However, these conventional physics engines don't integrate well with data intensive applications.  Streams offer a way to integrate both into one unified architecture.
 
