@@ -18,7 +18,7 @@ Like Samsara, virtually everything in Peloton is a stream.  The decision to use 
 
 ###Tradeoffs
 
-Cycle.js supports four stream packages - Rx, RxJS, Most, and xStream. Most was selected for Peloton purely on run-time speed considerations. The home-grown Cycle.js stream package xStream was considered, however its advantages of  slightly smaller footprint and simpler API were not compelling given the rapid cycling that characterize all physics engines.
+Cycle.js supports four stream packages - Rx, RxJS, Most, and xStream. Most was selected for Peloton purely on run-time perfrormance considerations. The Cycle.js home-grown stream package xStream was considered, however its advantages (slightly smaller footprint, simpler API, and tighter integration with Cycle.js) were not sufficient to beat Most in the trade study, given the rapid cycling that characterize all physics engines. Rx and RxJS were not seriously considered; they offered neither speed nor compatibility advantages.
 
 ###Status
 
