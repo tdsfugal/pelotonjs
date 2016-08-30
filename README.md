@@ -1,8 +1,6 @@
 
 # Peloton.js
 
-[Peloton is very much a work in progress. The concepts and API will change rapidly until I can figure out what works and what doesn't work.]
-
 ##Overview
 Peloton is an experiment in stream-based, FRP physics engines *for Cycle.JS applications*.  Cycle.js is ideal for highly interactive single-page web apps like word processors, trading dashboards, and spreadsheets where control flows, visualizations, and data flows are tightly coupled. 
 
@@ -24,8 +22,7 @@ Cycle.js supports four stream packages - Rx, RxJS, Most, and xStream. Most was s
 
 A few of the functions in Peloton have been coded. They are undergoing unit testing and will be uploaded later. 
 
-###Acknowledgements
-
+Peloton is very much a work in progress. The concepts and API will change rapidly until I can figure out what works and what doesn't work.
 
 
 ###License MIT
