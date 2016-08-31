@@ -12,15 +12,11 @@ Because they represent physical processes, Peloton functions exist somewhere bet
 
 ##Motivation
 
-Peloton is not intended to replace any of the more mature classic physics engines out there - Phyics.js, Three.js, etc. -that could power game engines. These are mature, have large communities maintaining them, and are just the ticket if your goal is to create beautiful, cinema-quality 3D animations.  They fall a bit flat when the goal is to interact with the visualization in arbitrarily complex ways. 
+Peloton is not intended to be a replacement for a full-size physics or game engines.  There are many to choose from - Physics.js, Three.js, etc. that are mature, capable, and have large communities maintaining them. If your goal is to create a beautiful, cinema-quality 3D animated world use one of these.  Likewise, there are many mature data visualization packages out there.  if your goal is to create a visualization of a large data sets use D3 or something like it.  
 
-Likewise, there are solid data visualization packages out there too. D3, for example, is nearly an industry standard.  It is amazingly powerful at rendering  professional visualizations of complex data sets, but again, interacting with the data in complex ways is not easy. 
+If all you need are smooth, fast twiddles, bounces, and twirls for web commerce purposes then check out Angular, GreenSock, or any of the other hardware accelerated tweening solutions. There are many smaller players in this domain that may provide what you need with a smaller footprint too. 
 
-There are many CSS tweening packages designed to make the DOM sing, but these packages do a poor job of covering information through motion.  If all you need are a smooth, fast twiddles, bounces, and twirls to wake up the user for web commerce then check out Angular, GreenSock, or any of the other solid, hardware accelerated solutions.  
-
-Finally, there are a few frameworks that aspire to do to all - smooth, physics-based motions; real time data visualization; DOM-compatible interactivity, and so on.  The most famous of these, **famous**, folded up its flagship framework to pursue a quick-app development solution for non-coders. It's legacy, Samsara, is impressive but its author Dave Valdman is deliberately avoiding the massive crush of requirements that ended Famous. 
-
-Like Samsara, virtually everything in Peloton is a stream.  The decision to use streams is slightly different, though.  Streams help untangle timing issues, however conventional scheduled physics engines manage to do this well without the additional overhead of stream processing.  However, these conventional physics engines don't integrate well with data intensive applications.  Streams offer a way to integrate both into one unified architecture.
+The use case for Peloton is to provide the physical responses in highly interactive user interfaces where the user not only visualizes complex data but interacts with it in physicaly meaningful ways - by pushing, pulling, etc.  Unlike tweening engine, the responses Peloton can produces appear as if they were done to real objects moving in the real world. 
 
 ###Tradeoffs
 
