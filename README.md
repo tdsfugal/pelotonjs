@@ -4,7 +4,15 @@
 ##Overview
 Peloton is an experiment in stream-based, FRP physics engines *for Cycle.JS applications*.  Cycle.js is ideal for highly interactive single-page web apps like word processors, trading dashboards, and spreadsheets where control flows, visualizations, and data flows are tightly coupled. 
 
-Peloton is not intended to replace any of the solid physics engines out there - Phyics.js, Three.js, etc. -that could power game engines. These are mature, have large communities maintaining them, and are just the ticket if your goal is to create beautiful, cinema-quality 3D animations.  They fall a bit flat when the goal is to interact with the visualization in arbitrarily complex ways. 
+Cycle.js takes the basic input -> process -> output construct and closes the loop. Cycle programs have few mutable variables.  Instead, it uses **streams** - highly reactive immutable pipelines that accept events from sources and feed events to sinks, to construct highly responsive reactive networks.  In Cycle the **run** function behaves more like a constructor. It runs once to "lay out the tracks," and after that events flow around asynchronously on these mostly immutable "tracks" to operate the program. 
+
+Peloton is an attempt to provide real physics calculations in the form of streams.  Every Peloton function accepts streans as arguments (sources) and produces streams as output (sinks).  Calling the function is like calling a constructor to create an event transformation instance that joins streams together.  Running the function creates an immutable part of the Cycle network. Whenever it recieves an input event from one of its source streams it reacts by processing it and emitting one or more output events on its sink stream(s). 
+
+Because they represent physical processes, Peloton functions exist somewhere between pure functions and impure functions.  Some are pure functions, but most carry an internal state that is set by the accumulated history of events from the sources.  Peloton functions are pure in the sense that they will always produce the same output given the same history of input events (neglecting accumulated round-off errors), but a single event will produce different outputs at different times because the response depends on the input history. 
+
+##Motivation
+
+Peloton is not intended to replace any of the more mature classic physics engines out there - Phyics.js, Three.js, etc. -that could power game engines. These are mature, have large communities maintaining them, and are just the ticket if your goal is to create beautiful, cinema-quality 3D animations.  They fall a bit flat when the goal is to interact with the visualization in arbitrarily complex ways. 
 
 Likewise, there are solid data visualization packages out there too. D3, for example, is nearly an industry standard.  It is amazingly powerful at rendering  professional visualizations of complex data sets, but again, interacting with the data in complex ways is not easy. 
 
