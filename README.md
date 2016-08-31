@@ -8,7 +8,7 @@ Cycle.js takes the basic input -> process -> output construct and closes the loo
 
 Peloton is an attempt to provide real physics calculations in the form of streams.  Every Peloton function accepts streans as arguments (sources) and produces streams as output (sinks).  Calling the function is like calling a constructor to create an event transformation instance that joins streams together.  Running the function creates an immutable part of the Cycle network. Whenever it recieves an input event from one of its source streams it reacts by processing it and emitting one or more output events on its sink stream(s). 
 
-Because they represent physical processes, Peloton functions exist somewhere between pure functions and impure functions.  Some are pure functions, but most carry an internal state that is set by the accumulated history of events from the sources.  Peloton functions are pure in the sense that they will always produce the same output given the same history of input events (neglecting accumulated round-off errors), but a single event will produce different outputs at different times because the response depends on the input history. 
+Because they represent physical processes, the purity of a Peloton function must be qualified.  Peloton functions are pure in the sense that they have no side effects and always produce the same output given the same history of input events (neglecting accumulated round-off errors), but in general Peloton functions do not produce the same output for any single input event.  This is because the response of the function depends on the accumulated history of the inputs.  If these events are not known then the output cannot be predicted. 
 
 ##Motivation
 
