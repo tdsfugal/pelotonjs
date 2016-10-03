@@ -1,0 +1,24 @@
+{
+  "name": "@tdsfugal/peloton",
+  "version": "0.7.1",
+  "description": "Stream-based Physics library for animating Cycle.JS apps. Uses Most.js",
+  "main": "/dist/index.js",
+  "scripts": {
+    "compile": "./node_modules/.bin/webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@cycle/most-run": "^4.1.1",
+    "@most/hold": "^1.3.1",
+    "cycle-proxy": "^2.0.0",
+    "events": "^1.1.1",
+    "most": "^1.0.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "webpack": "^1.13.2"
+  },
+  "author": "",
+  "license": "ISC"
+}

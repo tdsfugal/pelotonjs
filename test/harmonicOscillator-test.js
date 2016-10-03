@@ -6,7 +6,7 @@ import { harmonicOscillator }                  from './harmonicOscillator2.js'
 
 const trigger$ = createAnimationTrigger()()
 
-const restPos$ = just(0).delay(1000).multicast()
+const restPos$ = just(1)
 
 const { state$, control$ } = harmonicOscillator(trigger$, {
   restPos$    : restPos$,

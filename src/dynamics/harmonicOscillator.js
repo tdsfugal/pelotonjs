@@ -1,6 +1,5 @@
 
-import { combine, just, merge, zip }   from 'most'
-import hold                     from '@most/hold'
+import { combine, just, merge, zip }   from 'most' 
 import proxy                    from 'cycle-proxy/most'
 
 import { simpleClock }          from '../clocks/simple/simpleClock.js'
@@ -31,7 +30,7 @@ function rollingSum (state, x) {
 export function harmonicOscillator (trigger$, options = {} ) {
 
   // Parameter sources; implies piecewise continuous ODE
-  const restPos$ = hold(options.restPos$ ? options.restPos$  : just(0))
+  const restPos$  = options.restPos$ ? options.restPos$  : just(0)
 
   // Parameter constants (this would be so much easier in CoffeeScript)
   const initPos   = initValue(options.initPos, 0)    // pixels... Could be a problem
@@ -92,7 +91,11 @@ export function harmonicOscillator (trigger$, options = {} ) {
     .scan(
       (rs, s) => rollingSum(rs, Math.abs(s[1])),  // Adds last n speed values together
       [ 0, [] ]                                   // Initial state
-    ).map( rs => rs[0] < 0.01) // termination criteria; true if rolling speed sum is small
+    )
+    .map( rs => rs[0] < 0.01) // termination criteria; true if rolling speed sum is small
+
+    //.tap( x => console.log (`Oscillator should stop = ${x}`))
+
     .skipRepeats()             // Only need one true, so ignore the rest. Resets with a false.
     .filter( x => x )          // Only let through the true values. False means it's moving.
     .map( x => STOP)           // Convert true events to stop messages

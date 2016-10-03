@@ -1,5 +1,5 @@
 
-import { generate }       from 'most'
+import { generate } from 'most'
 
 //Create universal requestAnimationFrame and cancelAnimationFrame functions
 const requestAnimationFrame = window.requestAnimationFrame
