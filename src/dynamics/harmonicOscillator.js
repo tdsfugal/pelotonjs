@@ -1,5 +1,5 @@
 
-import { combine, just, merge, zip }   from 'most' 
+import { combine, just, merge, zip }   from 'most'
 import proxy                    from 'cycle-proxy/most'
 
 import { simpleClock }          from '../clocks/simple/simpleClock.js'
@@ -65,6 +65,7 @@ export function harmonicOscillator (trigger$, options = {} ) {
 
   // Build the control stream.
   const start$   = func$.constant(START)  // START whenever the governing equation changes
+    .startWith(START)                     //   ... and when oscillator is instantiated
   const stopP$   = proxy()                // Proxy for "no movement" STOP stream
   const control$ = merge(start$, stopP$)
 

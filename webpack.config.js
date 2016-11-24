@@ -6,24 +6,24 @@ module.exports = {
   entry: './peloton.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'index.js',
+    filename: 'peloton.bundle.js',
   },
   module: {
     loaders: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      exclude: /node_modules/
+      include: /src/
     }]
-  },
-  devtool: 'eval-source-map',
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      output: {
-        comments: false,
-      },
-    }),
-  ]
+  }
+  //devtool: 'eval-source-map',
+  // plugins: [
+  //   new webpack.optimize.UglifyJsPlugin({
+  //     compress: {
+  //       warnings: false,
+  //     },
+  //     output: {
+  //       comments: false,
+  //     },
+  //   }),
+  // ]
 }
