@@ -108,5 +108,5 @@ export function harmonicOscillator (trigger$, options = {} ) {
       error: (ev) => null
     })
 
-  return { state$, control$ }
+  return { state$, control$ }  // Both streams are output only; state is data, control is meta
 }
